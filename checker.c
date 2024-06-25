@@ -2,11 +2,8 @@
 #include <assert.h>
 
 int temperratureIsOk(float temperature){
-  if(temperature < 0 || temperature > 45){
-    printf("Temperature out of range!\n");
-    return 0;
-  }
-  return 1;
+  (temperature < 0 || temperature > 45) ? 1 : printf("Temperature out of range!\n");
+  return 0;
 }
 int SocIsOk(float soc){
 if(soc < 20 || soc > 80) {
