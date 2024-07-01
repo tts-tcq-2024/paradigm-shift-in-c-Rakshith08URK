@@ -18,13 +18,13 @@ int batteryIsOk(float temperature, float soc, float chargeRate) {
         printf("State of charge is within acceptable range.\n");
     }
 
-    if (!charge_rate_ok) {
+    if (!chargeRate_ok) {
         printf("Charge Rate out of range.\n");
     } else {
         printf("Charge rate is within acceptable range.\n");
     }
 
-    return (temperature_ok && soc_ok && charge_rate_ok);
+    return (temperature_ok && soc_ok && chargeRate_ok);
 }
 
 int main() {
