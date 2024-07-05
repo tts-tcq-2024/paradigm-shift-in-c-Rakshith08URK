@@ -1,17 +1,20 @@
 #include <stdio.h>
 #include <assert.h>
 
-// Pure functions
-int is_valid_temperature(float temperature) {
+
+// Pure function to check temperature
+int isValidTemperature(float temperature) {
     return (temperature >= 0) && (temperature <= 45);
 }
 
-int is_valid_state_of_charge(float state_of_charge) {
-    return (state_of_charge >= 20) && (state_of_charge <= 80);
+// Pure function to check state of charge
+int isValidStateOfCharge(float soc) {
+    return (soc >= 20) && (soc <= 80);
 }
 
-int is_valid_charge_rate(float charge_rate) {
-    return (charge_rate < 0.8);
+// Pure function to check charge rate
+int isValidChargeRate(float chargeRate) {
+    return (chargeRate < 0.8);
 }
 
 // I/O function
@@ -19,16 +22,16 @@ void print_error_message(const char* message) {
     printf("Error: %s\n", message);
 }
 
-// Single function call to assert input
-void batteryIsOk(float temperature, float state_of_charge, float charge_rate) {
-    assert(is_valid_temperature(temperature) && 
-           is_valid_state_of_charge(state_of_charge) && 
-           is_valid_charge_rate(charge_rate));
-    printf("All parameters are within valid ranges.\n");
+// Pure function to check battery status
+int batteryIsOk(float temperature, float stateOfCharge, float chargeRate) {
+    return isValidTemperature(temperature) &&
+           isValidStateOfCharge(soc) &&
+           isValidChargeRate(chargeRate);
 }
 
 int main() {
     assert(batteryIsOk(25, 70, 0.7));
+    printf("Battery is OK\n");
     return 0;
 }
 
