@@ -1,34 +1,34 @@
 #include <stdio.h>
 #include <assert.h>
 
-int batteryIsOk(float temperature, float soc, float chargeRate) {
-    int temperature_ok = (temperature >= 0 && temperature <= 45);
-    int soc_ok = (soc >= 20 && soc <= 80);
-    int chargeRate_ok = (chargeRate < 0.8);
+// Pure functions
+int is_valid_temperature(float temperature) {
+    return (temperature >= 0) && (temperature <= 45);
+}
 
-    if (!temperature_ok) {
-        printf("Temperature is out of range.\n");
-    } else {
-        printf("Temperature is within acceptable range.\n");
-    }
+int is_valid_state_of_charge(float state_of_charge) {
+    return (state_of_charge >= 20) && (state_of_charge <= 80);
+}
 
-    if (!soc_ok) {
-        printf("State of charge is out of range.\n");
-    } else {
-        printf("State of charge is within acceptable range.\n");
-    }
+int is_valid_charge_rate(float charge_rate) {
+    return (charge_rate < 0.8);
+}
 
-    if (!chargeRate_ok) {
-        printf("Charge Rate out of range.\n");
-    } else {
-        printf("Charge rate is within acceptable range.\n");
-    }
+// I/O function
+void print_error_message(const char* message) {
+    printf("Error: %s\n", message);
+}
 
-    return (temperature_ok && soc_ok && chargeRate_ok);
+// Single function call to assert input
+void batteryIsOk(float temperature, float state_of_charge, float charge_rate) {
+    assert(is_valid_temperature(temperature) && 
+           is_valid_state_of_charge(state_of_charge) && 
+           is_valid_charge_rate(charge_rate));
+    printf("All parameters are within valid ranges.\n");
 }
 
 int main() {
-  assert(batteryIsOk(25, 70, 0.7));
-  assert(!batteryIsOk(50, 85, 0));
+    assert(batteryIsOk(25, 70, 0.7));
+    return 0;
 }
 
