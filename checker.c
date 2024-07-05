@@ -8,8 +8,8 @@ int isValidTemperature(float temperature) {
 }
 
 // Pure function to check state of charge
-int isValidStateOfCharge(float soc) {
-    return (soc >= 20) && (soc <= 80);
+int isValidStateOfCharge(float stateOfCharge) {
+    return (stateOfCharge >= 20) && (stateOfCharge <= 80);
 }
 
 // Pure function to check charge rate
@@ -25,7 +25,7 @@ void print_error_message(const char* message) {
 // Pure function to check battery status
 int batteryIsOk(float temperature, float stateOfCharge, float chargeRate) {
     return isValidTemperature(temperature) &&
-           isValidStateOfCharge(soc) &&
+           isValidStateOfCharge(stateOfCharge) &&
            isValidChargeRate(chargeRate);
 }
 
